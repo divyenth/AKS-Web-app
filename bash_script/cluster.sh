@@ -1,7 +1,11 @@
 #! bin/bash
 
-#creating AKS cluster from terraform scripts
+#Initializing terraform
+terraform init -backend-config="storage_account_name=tfstat" -backend-config="container_name=tfstate" -backend-config="access_key=0UFxHPF0dsUmDaZNvL4NS0zxBuNWtMBDZrR+zxMxWrujpg5C3g8Ylm7kh0HHrk7oiI2DgPzvsJheaIzxSzs45A==" -backend-config="key=codelab.microsoft.tfstate"
+
+#Creating terraform plan
 terraform plan -out out.plan
+#Creating the cluster
 terraform apply out.plan
 
 #setting up kubeconfig
